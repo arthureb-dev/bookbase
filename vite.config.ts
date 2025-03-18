@@ -1,8 +1,7 @@
 import vue from '@vitejs/plugin-vue';
-import autoprefixer from 'autoprefixer';
 import laravel from 'laravel-vite-plugin';
 import path from 'path';
-import tailwindcss from 'tailwindcss';
+import tailwindcss from '@tailwindcss/vite'
 import { resolve } from 'node:path';
 import { defineConfig } from 'vite';
 
@@ -21,16 +20,12 @@ export default defineConfig({
                 },
             },
         }),
+        tailwindcss(),
     ],
     resolve: {
         alias: {
             '@': path.resolve(__dirname, './resources/js'),
             'ziggy-js': resolve(__dirname, 'vendor/tightenco/ziggy'),
         },
-    },
-    css: {
-        postcss: {
-            plugins: [tailwindcss, autoprefixer],
-        },
-    },
+    }
 });
