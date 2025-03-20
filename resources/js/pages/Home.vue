@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import AppLogo from '@/components/AppLogo.vue';
+import BookCard from '@/components/BookCard.vue';
+import type { Book } from '@/types';
 import { Head, Link } from '@inertiajs/vue3';
 import {
     Facebook as FacebookIcon,
@@ -8,7 +10,6 @@ import {
     MapPin as MapPinIcon,
     Menu as MenuIcon,
     Phone as PhoneIcon,
-    Star as StarIcon,
     Twitter as TwitterIcon,
     X as XIcon,
 } from 'lucide-vue-next';
@@ -16,6 +17,8 @@ import { ref } from 'vue';
 
 // Reactive state for mobile menu toggle
 const mobileMenuOpen = ref(false);
+
+const { books } = defineProps<{ books: Book }>();
 </script>
 
 <template>
@@ -143,125 +146,7 @@ const mobileMenuOpen = ref(false);
                 </div>
 
                 <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
-                    <!-- Book 1 -->
-                    <div class="group">
-                        <div class="relative mb-4 overflow-hidden rounded-lg shadow-md">
-                            <img
-                                src="/placeholder.svg?height=400&width=300"
-                                alt="Book Cover"
-                                class="h-80 w-full object-cover transition-transform duration-300 group-hover:scale-105"
-                            />
-                            <div
-                                class="absolute inset-0 flex items-center justify-center bg-black/60 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-                            >
-                                <Link href="#" class="bg-primary hover:bg-primary/90 rounded-lg px-4 py-2 text-white transition-colors">
-                                    Quick View
-                                </Link>
-                            </div>
-                        </div>
-                        <h3 class="text-lg font-bold">The Silent Echo</h3>
-                        <p class="text-gray-600">by Sarah Johnson</p>
-                        <div class="mt-2 flex items-center">
-                            <div class="flex">
-                                <StarIcon class="h-4 w-4 text-yellow-400" />
-                                <StarIcon class="h-4 w-4 text-yellow-400" />
-                                <StarIcon class="h-4 w-4 text-yellow-400" />
-                                <StarIcon class="h-4 w-4 text-yellow-400" />
-                                <StarIcon class="h-4 w-4 text-yellow-400" />
-                            </div>
-                            <span class="ml-1 text-sm text-gray-500">(128)</span>
-                        </div>
-                    </div>
-
-                    <!-- Book 2 -->
-                    <div class="group">
-                        <div class="relative mb-4 overflow-hidden rounded-lg shadow-md">
-                            <img
-                                src="/placeholder.svg?height=400&width=300"
-                                alt="Book Cover"
-                                class="h-80 w-full object-cover transition-transform duration-300 group-hover:scale-105"
-                            />
-                            <div
-                                class="absolute inset-0 flex items-center justify-center bg-black/60 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-                            >
-                                <Link href="#" class="bg-primary hover:bg-primary/90 rounded-lg px-4 py-2 text-white transition-colors">
-                                    Quick View
-                                </Link>
-                            </div>
-                        </div>
-                        <h3 class="text-lg font-bold">Midnight Chronicles</h3>
-                        <p class="text-gray-600">by Michael Chen</p>
-                        <div class="mt-2 flex items-center">
-                            <div class="flex">
-                                <StarIcon class="h-4 w-4 text-yellow-400" />
-                                <StarIcon class="h-4 w-4 text-yellow-400" />
-                                <StarIcon class="h-4 w-4 text-yellow-400" />
-                                <StarIcon class="h-4 w-4 text-yellow-400" />
-                                <StarIcon class="h-4 w-4 text-gray-300" />
-                            </div>
-                            <span class="ml-1 text-sm text-gray-500">(95)</span>
-                        </div>
-                    </div>
-
-                    <!-- Book 3 -->
-                    <div class="group">
-                        <div class="relative mb-4 overflow-hidden rounded-lg shadow-md">
-                            <img
-                                src="/placeholder.svg?height=400&width=300"
-                                alt="Book Cover"
-                                class="h-80 w-full object-cover transition-transform duration-300 group-hover:scale-105"
-                            />
-                            <div
-                                class="absolute inset-0 flex items-center justify-center bg-black/60 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-                            >
-                                <Link href="#" class="bg-primary hover:bg-primary/90 rounded-lg px-4 py-2 text-white transition-colors">
-                                    Quick View
-                                </Link>
-                            </div>
-                        </div>
-                        <h3 class="text-lg font-bold">The Lost Garden</h3>
-                        <p class="text-gray-600">by Emily Rodriguez</p>
-                        <div class="mt-2 flex items-center">
-                            <div class="flex">
-                                <StarIcon class="h-4 w-4 text-yellow-400" />
-                                <StarIcon class="h-4 w-4 text-yellow-400" />
-                                <StarIcon class="h-4 w-4 text-yellow-400" />
-                                <StarIcon class="h-4 w-4 text-yellow-400" />
-                                <StarIcon class="h-4 w-4 text-yellow-400" />
-                            </div>
-                            <span class="ml-1 text-sm text-gray-500">(156)</span>
-                        </div>
-                    </div>
-
-                    <!-- Book 4 -->
-                    <div class="group">
-                        <div class="relative mb-4 overflow-hidden rounded-lg shadow-md">
-                            <img
-                                src="/placeholder.svg?height=400&width=300"
-                                alt="Book Cover"
-                                class="h-80 w-full object-cover transition-transform duration-300 group-hover:scale-105"
-                            />
-                            <div
-                                class="absolute inset-0 flex items-center justify-center bg-black/60 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-                            >
-                                <Link href="#" class="bg-primary hover:bg-primary/90 rounded-lg px-4 py-2 text-white transition-colors">
-                                    Quick View
-                                </Link>
-                            </div>
-                        </div>
-                        <h3 class="text-lg font-bold">Beyond the Horizon</h3>
-                        <p class="text-gray-600">by David Thompson</p>
-                        <div class="mt-2 flex items-center">
-                            <div class="flex">
-                                <StarIcon class="h-4 w-4 text-yellow-400" />
-                                <StarIcon class="h-4 w-4 text-yellow-400" />
-                                <StarIcon class="h-4 w-4 text-yellow-400" />
-                                <StarIcon class="h-4 w-4 text-yellow-400" />
-                                <StarIcon class="h-4 w-4 text-gray-300" />
-                            </div>
-                            <span class="ml-1 text-sm text-gray-500">(87)</span>
-                        </div>
-                    </div>
+                    <BookCard v-for="book in books" :key="book.id" :book="book" />
                 </div>
 
                 <div class="mt-12 text-center">

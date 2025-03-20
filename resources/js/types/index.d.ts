@@ -51,6 +51,14 @@ export interface BookStates {
     [index: number]: string;
 }
 
+export interface Review {
+    id?: string;
+    user?: User | null;
+    comments: string;
+    rating: number;
+    created_at?: string | null;
+}
+
 export interface Book {
     id?: string;
     slug?: string;
@@ -64,7 +72,13 @@ export interface Book {
     cover_image?: File | string | null;
     published_at?: string | null;
     page_count?: number;
+    checked_out_at?: string | null;
+    due_date?: string | null;
+    checked_out_by?: User | null;
     deleted_at?: string | null;
+    average_rating?: number;
+    review_count?: number;
+    reviews?: Review[];
 }
 
 export type BreadcrumbItemType = BreadcrumbItem;

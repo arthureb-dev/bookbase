@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import { DropdownMenu, DropdownMenuCheckboxItem, DropdownMenuContent, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 import { Input } from '@/components/ui/input';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
-import { formatLabel } from '@/composables/useFormatter';
+import { formatLabel, getStatusVariant } from '@/composables/useFormatter';
 import { showToast } from '@/composables/useToasts';
 import AppLayout from '@/layouts/AppLayout.vue';
 import { cn, valueUpdater } from '@/lib/utils';
@@ -107,7 +107,7 @@ const columns = [
                 () => ['Status', h(ArrowUpDown, { class: 'ml-1 h-4 w-4' })],
             );
         },
-        cell: ({ row }) => h(Badge, { class: 'capitalize', variant: getBadgeVariant(row.getValue('state')) }, formatLabel(row.getValue('state'))),
+        cell: ({ row }) => h(Badge, { class: 'capitalize', variant: getStatusVariant(row.getValue('state')) }, formatLabel(row.getValue('state'))),
     }),
     columnHelper.accessor('published_at', {
         header: ({ column }) => {
@@ -193,18 +193,6 @@ const table = useVueTable({
         columnPinning: { left: ['select'] },
     },
 });
-
-function getBadgeVariant(status: string): string {
-    const mapping: Record<string, string> = {
-        available: 'primary',
-        checked_out: 'outline',
-        lost: 'destructive',
-        reserved: 'secondary',
-        under_maintenance: 'warning',
-    };
-
-    return mapping[status] || 'default';
-}
 </script>
 
 <template>
