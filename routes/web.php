@@ -7,7 +7,7 @@ use Inertia\Inertia;
 
 Route::get('/', function () {
     return Inertia::render('Home', [
-        'books' => Book::inRandomOrder()->take(5)->get(),
+        'books' => Book::inRandomOrder()->take(4)->get(),
     ]);
 })->name('home');
 

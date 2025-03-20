@@ -24,7 +24,7 @@ class BookResource extends JsonResource
             'publisher' => $this->publisher,
             'isbn' => $this->isbn,
             'category' => $this->category,
-            'cover_image' => Storage::url($this->cover_image),
+            'cover_image' => filter_var($this->cover_image, FILTER_VALIDATE_URL) ? $this->cover_image : Storage::url($this->cover_image),
             'state' => $this->state,
             'published_at' => $this->published_at->format('Y-m-d'),
             'page_count' => $this->page_count,
