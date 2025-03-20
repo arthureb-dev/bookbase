@@ -27,5 +27,8 @@ export default defineConfig({
             '@': path.resolve(__dirname, './resources/js'),
             'ziggy-js': resolve(__dirname, 'vendor/tightenco/ziggy'),
         },
+    },
+    optimizeDeps: {
+        exclude: ['reka-ui']
     }
 });
