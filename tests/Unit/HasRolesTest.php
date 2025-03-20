@@ -48,8 +48,8 @@ class HasRolesTest extends TestCase
     public function it_checks_role_by_array()
     {
         $librarian = Role::create(['name' => 'librarian']);
-        $customer  = Role::create(['name' => 'customer']);
-        $user      = User::factory()->create();
+        $customer = Role::create(['name' => 'customer']);
+        $user = User::factory()->create();
 
         $user->roles()->attach($librarian->id);
 
@@ -61,7 +61,7 @@ class HasRolesTest extends TestCase
     public function it_checks_role_by_pipe_delimited_string()
     {
         $librarianRole = Role::create(['name' => 'librarian']);
-        $user          = User::factory()->create();
+        $user = User::factory()->create();
         $user->roles()->attach($librarianRole->id);
 
         $this->assertTrue($user->hasRole('librarian|customer'));

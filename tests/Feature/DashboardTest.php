@@ -6,13 +6,13 @@ use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
-class DashboardTest extends TestCase
+class BooksTest extends TestCase
 {
     use RefreshDatabase;
 
     public function test_guests_are_redirected_to_the_login_page()
     {
-        $response = $this->get('/dashboard');
+        $response = $this->get('/books');
         $response->assertRedirect('/login');
     }
 
@@ -21,7 +21,7 @@ class DashboardTest extends TestCase
         $user = User::factory()->create();
         $this->actingAs($user);
 
-        $response = $this->get('/dashboard');
+        $response = $this->get('/books');
         $response->assertStatus(200);
     }
 }

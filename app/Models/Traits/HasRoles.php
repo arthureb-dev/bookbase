@@ -41,6 +41,7 @@ trait HasRoles
                     return true;
                 }
             }
+
             return false;
         }
 

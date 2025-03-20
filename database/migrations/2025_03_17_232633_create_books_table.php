@@ -19,11 +19,11 @@ return new class extends Migration
             $table->string('author');
             $table->text('description');
             $table->string('publisher');
-            $table->string('isbn')->index()->nullable();
+            $table->string('isbn', 20)->unique();
             $table->string('category')->index();
             $table->string('cover_image')->nullable();
             $table->string('state');
-            $table->dateTime('published_at')->nullable();
+            $table->date('published_at')->nullable();
             $table->integer('page_count')->default(0);
             $table->timestamps();
             $table->softDeletes();
